@@ -68,8 +68,7 @@ const posts = [
 
 
 
-
-
+// PROGRAMMA******************************
 
 // richiamo la funzione per stampare i post
 printPost();
@@ -77,12 +76,32 @@ printPost();
 
 
 
+
+
+
+// FUNZIONI********************************
+
 // funzione per stampare i post
 function printPost() {
     for(let i = 0; i < posts.length; i++) {
-
         // richiamo la funzione
         generatePost(posts[i]);
+    }
+
+    // incremento/decremento like
+    for (let i = 0; i < posts.length; i++) {
+        const button = document.getElementsByClassName('js-like-button');
+        const likeCounters = document.getElementsByClassName(`js-likes-counter`);
+
+        // evento al click
+        button[i].addEventListener('click', function(){ 
+            button[i].classList.toggle('like-button--liked');
+            if(button[i].classList.contains('like-button--liked')) { 
+                likeCounters[i].innerHTML = parseInt(likeCounters[i].innerHTML) + 1;
+            } else {
+                likeCounters[i].innerHTML = parseInt(likeCounters[i].innerHTML) - 1;
+            }
+        })
     }
 }
 
@@ -133,31 +152,7 @@ function generatePost(array) {
 
 
 
-button = document.getElementsByClassName('js-like-button');
-
-for (let i = 0; i < button.length; i++) {
-
-    let likeCounter = document.getElementById(`like-counter-${i + 1}`);
-    let count = posts[i].likes;
-    console.log(likeCounter);
 
 
-    // evento al click
-    button[i].addEventListener('click', function(){ 
-    
-        button[i].classList.toggle('like-button--liked');
 
-            if(button[i].classList.contains('like-button--liked')) {
-                
-                count++;
-
-            } else {
-                count--;
-            }
-        
-        likeCounter.innerHTML = count;
-
-
-    })
-}
 
