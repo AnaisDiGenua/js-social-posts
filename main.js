@@ -137,9 +137,9 @@ button = document.getElementsByClassName('js-like-button');
 
 for (let i = 0; i < button.length; i++) {
 
-    let likeCounter = document.querySelector('.js-likes-counter');
+    let likeCounter = document.getElementById(`like-counter-${i + 1}`);
     let count = posts[i].likes;
-    console.log(count);
+    console.log(likeCounter);
 
 
     // evento al click
@@ -160,3 +160,4 @@ for (let i = 0; i < button.length; i++) {
 
     })
 }
+
