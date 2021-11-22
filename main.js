@@ -128,3 +128,35 @@ function generatePost(array) {
         </div>
     `
 }
+
+
+
+
+
+button = document.getElementsByClassName('js-like-button');
+
+for (let i = 0; i < button.length; i++) {
+
+    let likeCounter = document.querySelector('.js-likes-counter');
+    let count = posts[i].likes;
+    console.log(count);
+
+
+    // evento al click
+    button[i].addEventListener('click', function(){ 
+    
+        button[i].classList.toggle('like-button--liked');
+
+            if(button[i].classList.contains('like-button--liked')) {
+                
+                count++;
+
+            } else {
+                count--;
+            }
+        
+        likeCounter.innerHTML = count;
+
+
+    })
+}
